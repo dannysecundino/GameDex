@@ -7,8 +7,10 @@ import java.util.ArrayList;
 
 public class BancoDados {
     private static BancoDados instancia;
-    private static ArrayList<Obra> obrasCatalogadas;
-    private static ArrayList<Usuario> usuarios;
+    private static ArrayList<Obra> obrasCatalogadas = new ArrayList<>();
+    private static ArrayList<Usuario> usuarios = new ArrayList<>();
+
+
     public static BancoDados getInstancia() {
         if (instancia == null) instancia = new BancoDados();
         return instancia;
