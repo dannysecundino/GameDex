@@ -2,11 +2,11 @@ package obras.jogos;
 
 import obras.Obra;
 
-public class Jogos extends Obra {
+public class Jogo extends Obra {
     private String genero;
     private String plataforma;
 
-    public Jogos(int id, String titulo, String desenvolvedor, int ano, String genero, String plataforma) {
+    public Jogo(int id, String titulo, String desenvolvedor, int ano, String genero, String plataforma) {
         super(id, titulo,ano,desenvolvedor);
         this.genero = genero;
         this.plataforma = plataforma;

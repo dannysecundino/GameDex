@@ -4,13 +4,13 @@ import javax.swing.*;
 import java.awt.*;
 
 import gerenciamentoPrograma.bancoDados.BancoDados;
-import obras.jogos.Jogos;
+import obras.jogos.Jogo;
 import obras.expansao.Expansao;
 import obras.Obra;
 
 public class TelaFormularioDLC extends JFrame {
     private JTextField txtTitulo, txtDev, txtAno;
-    private JComboBox<Jogos> comboJogoBase;
+    private JComboBox<Jogo> comboJogoBase;
     private JButton btnSalvar;
 
     public TelaFormularioDLC() {
@@ -32,8 +32,8 @@ public class TelaFormularioDLC extends JFrame {
 
         comboJogoBase = new JComboBox<>();
         for (Obra o : BancoDados.getInstancia().getObras()) {
-            if (o instanceof Jogos) {
-                comboJogoBase.addItem((Jogos) o);
+            if (o instanceof Jogo) {
+                comboJogoBase.addItem((Jogo) o);
             }
         }
         gbc.gridx = 1;
@@ -56,7 +56,7 @@ public class TelaFormularioDLC extends JFrame {
 
     private void salvar() {
         try {
-            Jogos jogoBase = (Jogos) comboJogoBase.getSelectedItem();
+            Jogo jogoBase = (Jogo) comboJogoBase.getSelectedItem();
             if (jogoBase == null) {
                 JOptionPane.showMessageDialog(this, "É necessário um jogo base para cadastrar uma DLC!");
                 return;

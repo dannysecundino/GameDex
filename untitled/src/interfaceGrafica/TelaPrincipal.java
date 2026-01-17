@@ -12,7 +12,7 @@ import usuarios.Usuario;
 import usuarios.moderador.Moderador;
 import usuarios.moderador.superModerador.SuperModerador;
 import obras.Obra;
-import obras.jogos.Jogos;
+import obras.jogos.Jogo;
 import obras.expansao.Expansao;
 
 public class TelaPrincipal extends JFrame {
@@ -118,8 +118,8 @@ public class TelaPrincipal extends JFrame {
                 int idBuscado = Integer.parseInt(modeloTabela.getValueAt(linha, 0).toString());
                 for (Obra obra : BancoDados.getInstancia().getObras()) {
                     if (obra.getId() == idBuscado) {
-                        if (obra instanceof Jogos) {
-                            new TelaDetalhesJogo((Jogos) obra);
+                        if (obra instanceof Jogo) {
+                            new TelaDetalhesJogo((Jogo) obra);
                         } else if (obra instanceof Expansao) {
                             Expansao dlc = (Expansao) obra;
                             String info = "DLC: " + dlc.getTitulo() +
@@ -188,7 +188,7 @@ public class TelaPrincipal extends JFrame {
             String tipo = "";
             String generoPlataforma = "-";
 
-            if (o instanceof Jogos j) {
+            if (o instanceof Jogo j) {
                 tipo = "Jogo";
                 generoPlataforma = j.getGenero() + " / " + j.getPlataforma();
             } else if (o instanceof Expansao e) {

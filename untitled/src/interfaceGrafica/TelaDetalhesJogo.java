@@ -4,19 +4,19 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-import obras.jogos.Jogos;
+import obras.jogos.Jogo;
 import avaliacao.Avaliacao;
 import gerenciamentoPrograma.gerenciaLogin.LoginAut;
 import usuarios.Usuario;
 import excecoes.NotaInvalidaException;
 
 public class TelaDetalhesJogo extends JFrame {
-    private Jogos jogo;
+    private Jogo jogo;
     private Usuario userLogado;
     private JPanel painelComentarios;
     private JLabel lblMedia;
 
-    public TelaDetalhesJogo(Jogos jogo) {
+    public TelaDetalhesJogo(Jogo jogo) {
         this.jogo = jogo;
         this.userLogado = LoginAut.getUsuarioLogado();
 

@@ -5,7 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import gerenciamentoPrograma.bancoDados.BancoDados;
 import obras.Obra;
-import obras.jogos.Jogos;
+import obras.jogos.Jogo;
 
 public class TelaGerenciarCatalogo extends JFrame {
     private JTable tabela;
@@ -53,7 +53,7 @@ public class TelaGerenciarCatalogo extends JFrame {
     private void atualizarTabela() {
         modelo.setRowCount(0);
         for (Obra o : BancoDados.getInstancia().getObras()) {
-            String tipo = (o instanceof Jogos) ? "Jogo" : "DLC";
+            String tipo = (o instanceof Jogo) ? "Jogo" : "DLC";
             modelo.addRow(new Object[]{o.getId(), o.getTitulo(), tipo, o.getDesenvolvedor()});
         }
     }

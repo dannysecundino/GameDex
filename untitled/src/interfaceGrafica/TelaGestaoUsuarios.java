@@ -3,6 +3,8 @@ package interfaceGrafica;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+
+import excecoes.PromocaoOuRebaixamentoInvalido;
 import gerenciamentoPrograma.bancoDados.BancoDados;
 import usuarios.Usuario;
 import usuarios.moderador.superModerador.SuperModerador;
@@ -57,46 +59,50 @@ public class TelaGestaoUsuarios extends JFrame {
     }
 
     private void realizarAcao(boolean promover) {
-        int linha = tabela.getSelectedRow();
-        if (linha == -1) {
-            JOptionPane.showMessageDialog(this, "Selecione um usuário!");
-            return;
-        }
-
-        String login = (String) modelo.getValueAt(linha, 1);
-        BancoDados bd = BancoDados.getInstancia();
-        Usuario alvo = null;
-        int indexAlvo = -1;
-
-        for (int i = 0; i < bd.getUsuarios().size(); i++) {
-            if (bd.getUsuarios().get(i).getLogin().equals(login)) {
-                alvo = bd.getUsuarios().get(i);
-                indexAlvo = i;
-                break;
+        try{
+            int linha = tabela.getSelectedRow();
+            if (linha == -1) {
+                JOptionPane.showMessageDialog(this, "Selecione um usuário!");
+                return;
             }
-        }
 
-        SuperModerador admin = (SuperModerador) gerenciamentoPrograma.gerenciaLogin.LoginAut.getUsuarioLogado();
+            String login = (String) modelo.getValueAt(linha, 1);
+            BancoDados bd = BancoDados.getInstancia();
+            Usuario alvo = null;
+            int indexAlvo = -1;
 
-        if (promover) {
-            if (!(alvo instanceof Moderador)) {
-                admin.promoverParaModerador(alvo);
-                // IMPORTANTE: O admin cria um novo objeto, precisamos de o substituir na lista
-                for (Usuario u : bd.getUsuarios()) {
-                    if (u.getLogin().equals(login) && u instanceof Moderador) {
-                        // O objeto já foi trocado pela lógica do SuperModerador
-                        break;
-                    }
+            for (int i = 0; i < bd.getUsuarios().size(); i++) {
+                if (bd.getUsuarios().get(i).getLogin().equals(login)) {
+                    alvo = bd.getUsuarios().get(i);
+                    indexAlvo = i;
+                    break;
                 }
             }
-        } else {
-            if (alvo instanceof Moderador && !(alvo instanceof SuperModerador)) {
-                admin.rebaixarParaJogador((Moderador) alvo);
-            }
-        }
 
-        atualizarTabela();
-        JOptionPane.showMessageDialog(this, "Operação concluída! O cargo foi atualizado.");
+            SuperModerador admin = (SuperModerador) gerenciamentoPrograma.gerenciaLogin.LoginAut.getUsuarioLogado();
+
+            if (promover) {
+                if (!(alvo instanceof Moderador) && !(alvo instanceof SuperModerador)) {
+                    admin.promoverParaModerador(alvo);
+                    // IMPORTANTE: O admin cria um novo objeto, precisamos de o substituir na lista
+                    for (Usuario u : bd.getUsuarios()) {
+                        if (u.getLogin().equals(login) && u instanceof Moderador) {
+                            // O objeto já foi trocado pela lógica do SuperModerador
+                            break;
+                        }
+                    }
+                } else throw new PromocaoOuRebaixamentoInvalido("Não é possível promover moderadores nem supermoderadores.");
+            } else {
+                if (alvo instanceof Moderador && !(alvo instanceof SuperModerador)) {
+                    admin.rebaixarParaJogador((Moderador) alvo);
+                } else throw new PromocaoOuRebaixamentoInvalido("Não é possível rebaixar jogadores nem supermoderadores.");
+            }
+
+            atualizarTabela();
+            JOptionPane.showMessageDialog(this, "Operação concluída! O cargo foi atualizado.");
+        } catch (PromocaoOuRebaixamentoInvalido ex){
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Alteração de cargo inválida", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void realizarRemocao() {
