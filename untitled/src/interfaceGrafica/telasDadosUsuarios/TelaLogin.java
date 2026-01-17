@@ -20,7 +20,7 @@ public class TelaLogin extends JFrame {
     public TelaLogin() {
         //icone da tela
         Image icon = Toolkit.getDefaultToolkit()
-                .getImage(getClass().getResource("/images/icon.jpg"));
+                .getImage(getClass().getResource("/images/logo.png"));
         setIconImage(icon);
 
         //configs básicas

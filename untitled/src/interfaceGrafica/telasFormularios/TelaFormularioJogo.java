@@ -14,7 +14,7 @@ public class TelaFormularioJogo extends JFrame {
     public TelaFormularioJogo() {
         //icone da tela
         Image icon = Toolkit.getDefaultToolkit()
-                .getImage(getClass().getResource("/images/icon.jpg"));
+                .getImage(getClass().getResource("/images/logo.png"));
         setIconImage(icon);
 
         setTitle("GameDex - Novo Jogo");

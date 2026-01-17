@@ -19,7 +19,7 @@ public class TelaDetalhesDLC extends JFrame {
     public TelaDetalhesDLC(Expansao exp) {
         //icone da tela
         Image icon = Toolkit.getDefaultToolkit()
-                .getImage(getClass().getResource("/images/icon.jpg"));
+                .getImage(getClass().getResource("/images/logo.png"));
         setIconImage(icon);
 
         this.exp = exp;

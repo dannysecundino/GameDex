@@ -17,7 +17,7 @@ public class TelaCadastro extends JFrame{
     public TelaCadastro() {
         //icone da tela
         Image icon = Toolkit.getDefaultToolkit()
-                .getImage(getClass().getResource("/images/icon.jpg"));
+                .getImage(getClass().getResource("/images/logo.png"));
         setIconImage(icon);
 
         //configs basicas

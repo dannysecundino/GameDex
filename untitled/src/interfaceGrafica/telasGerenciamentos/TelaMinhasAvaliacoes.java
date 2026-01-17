@@ -16,7 +16,7 @@ public class TelaMinhasAvaliacoes extends JFrame {
     public TelaMinhasAvaliacoes() {
         //icone da tela
         Image icon = Toolkit.getDefaultToolkit()
-                .getImage(getClass().getResource("/images/icon.jpg"));
+                .getImage(getClass().getResource("/images/logo.png"));
         setIconImage(icon);
 
         setTitle("GameDex - Minhas Avaliações");

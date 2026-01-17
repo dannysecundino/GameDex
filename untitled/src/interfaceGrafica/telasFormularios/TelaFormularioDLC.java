@@ -16,7 +16,7 @@ public class TelaFormularioDLC extends JFrame {
     public TelaFormularioDLC() {
         //icone da tela
         Image icon = Toolkit.getDefaultToolkit()
-                .getImage(getClass().getResource("/images/icon.jpg"));
+                .getImage(getClass().getResource("/images/logo.png"));
         setIconImage(icon);
 
         setTitle("GameDex - Nova DLC");

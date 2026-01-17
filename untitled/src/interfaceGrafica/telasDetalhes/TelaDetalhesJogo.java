@@ -19,7 +19,7 @@ public class TelaDetalhesJogo extends JFrame {
     public TelaDetalhesJogo(Jogo jogo) {
         //icone da tela
         Image icon = Toolkit.getDefaultToolkit()
-                .getImage(getClass().getResource("/images/icon.jpg"));
+                .getImage(getClass().getResource("/images/logo.png"));
         setIconImage(icon);
 
         this.jogo = jogo;
