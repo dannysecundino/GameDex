@@ -45,7 +45,7 @@ public class TelaSobreMim extends JFrame {
         add(lblCargo, gbc);
 
         gbc.gridx = 0; gbc.gridy = 2;
-        add(new JLabel("Nome Completo:"), gbc);
+        add(new JLabel("Nome:"), gbc);
         txtNomeCompleto = new JTextField(userLogado.getNome(), 15);
         gbc.gridx = 1;
         add(txtNomeCompleto, gbc);
