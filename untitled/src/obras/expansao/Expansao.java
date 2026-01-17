@@ -1,10 +1,14 @@
 package obras.expansao;
 
 import obras.Obra;
+import obras.jogos.Jogos;
 
 public class Expansao extends Obra {
-    private Obra jogoBase;
-    public Expansao(int id, String titulo, String desenvolvedor, int ano, Obra jogoBase) {
+    private Jogos jogoBase;
+    public Jogos getJogoBase() {
+        return this.jogoBase;
+    }
+    public Expansao(int id, String titulo, String desenvolvedor, int ano, Jogos jogoBase) {
         super(id, titulo,ano,desenvolvedor);
         this.jogoBase = jogoBase;
     }

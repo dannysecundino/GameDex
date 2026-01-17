@@ -44,6 +44,10 @@ public class Usuario implements Autenticavel, Exibivel {
         return senha;
     }
 
+    public void setNome(String nome) {  this.nome = nome;}
+
+    public void setEmail(String email) {  this.email = email;}
+
     public LocalDate getDataEntradaPlataforma() {
         return dataEntradaPlataforma;
     }
