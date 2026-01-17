@@ -50,12 +50,20 @@ public class TelaPrincipal extends JFrame {
         lblLogo.setFont(new Font("Segoe UI", Font.BOLD, 22));
         lblLogo.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+        ImageIcon logo = new ImageIcon(getClass().getResource("/images/logo.png"));
+
+        Image img = logo.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+
+        JLabel lblImagem = new JLabel(new ImageIcon(img));
+        lblImagem.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        sidebar.add(lblImagem);
+        sidebar.add(Box.createRigidArea(new Dimension(0, 10)));
+
         sidebar.add(lblLogo);
         sidebar.add(Box.createRigidArea(new Dimension(0, 40)));
 
         //botões na sidebar
-        sidebar.add(criarBotaoMenu("Catálogo"));
-        sidebar.add(Box.createRigidArea(new Dimension(0, 10)));
 
         JButton btnMinhasAv = criarBotaoMenu("Minhas Avaliações");
         btnMinhasAv.addActionListener(e -> new TelaMinhasAvaliacoes());
