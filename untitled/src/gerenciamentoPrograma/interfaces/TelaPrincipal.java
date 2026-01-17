@@ -13,6 +13,7 @@ import usuarios.moderador.Moderador;
 import usuarios.moderador.superModerador.SuperModerador;
 import obras.Obra;
 import obras.jogos.Jogos;
+import obras.expansao.Expansao;
 
 public class TelaPrincipal extends JFrame {
     private JTable tabelaJogos;
@@ -43,16 +44,34 @@ public class TelaPrincipal extends JFrame {
         //botões na sidebar
         sidebar.add(criarBotaoMenu("Catálogo"));
         sidebar.add(Box.createRigidArea(new Dimension(0, 10)));
-        sidebar.add(criarBotaoMenu("Minhas Avaliações"));
+
+        JButton btnMinhasAv = criarBotaoMenu("Minhas Avaliações");
+        btnMinhasAv.addActionListener(e -> new TelaMinhasAvaliacoes());
+        sidebar.add(btnMinhasAv);
+
+        sidebar.add(Box.createRigidArea(new Dimension(0, 10)));
+        JButton btnSobreMim = criarBotaoMenu("Sobre Mim");
+        btnSobreMim.addActionListener(e -> new TelaSobreMim());
+        sidebar.add(btnSobreMim);
 
         Usuario userLogado = LoginAut.getUsuarioLogado();
+
         if (userLogado instanceof Moderador) {
             sidebar.add(Box.createRigidArea(new Dimension(0, 10)));
-            sidebar.add(criarBotaoMenu("Adicionar Jogo"));
+
+
+            JButton btnGerenciar = criarBotaoMenu("Adicionar Jogo");
+            btnGerenciar.setText("Gerenciar Catálogo");
+
+            btnGerenciar.addActionListener(e -> new TelaGerenciarCatalogo());
+
+            sidebar.add(btnGerenciar);
         }
         if (userLogado instanceof SuperModerador) {
             sidebar.add(Box.createRigidArea(new Dimension(0, 10)));
-            sidebar.add(criarBotaoMenu("Administração"));
+            JButton btnAdmin = criarBotaoMenu("Administração");
+            btnAdmin.addActionListener(e -> new TelaGestaoUsuarios());
+            sidebar.add(btnAdmin);
         }
 
         sidebar.add(Box.createVerticalGlue()); // Empurra o logout para o fim
@@ -92,24 +111,29 @@ public class TelaPrincipal extends JFrame {
         btnVer.setFocusPainted(false);
         btnVer.setFont(new Font("Segoe UI", Font.BOLD, 14));
         contentArea.add(btnVer, BorderLayout.SOUTH);
+
         btnVer.addActionListener(e -> {
             int linha = tabelaJogos.getSelectedRow();
             if (linha != -1) {
-                try {
-                    //JTable guarda em String, por isso é bom converter para INT para comparar os IDs
-                    Object valorCelula = modeloTabela.getValueAt(linha, 0);
-                    int idBuscado = Integer.parseInt(valorCelula.toString());
-                    for (obras.Obra obra : gerenciamentoPrograma.bancoDados.BancoDados.getInstancia().getObras()) {
-                        if (obra.getId() == idBuscado) {
-                            new TelaDetalhesJogo((obras.jogos.Jogos) obra);
-                            return;
+                int idBuscado = Integer.parseInt(modeloTabela.getValueAt(linha, 0).toString());
+                for (Obra obra : BancoDados.getInstancia().getObras()) {
+                    if (obra.getId() == idBuscado) {
+                        if (obra instanceof Jogos) {
+                            new TelaDetalhesJogo((Jogos) obra);
+                        } else if (obra instanceof Expansao) {
+                            Expansao dlc = (Expansao) obra;
+                            String info = "DLC: " + dlc.getTitulo() +
+                                    "\nAno: " + dlc.getAno() +
+                                    "\nDesenvolvedora: " + dlc.getDesenvolvedor() +
+                                    "\n\nESTA É UMA EXPANSÃO DE: " + dlc.getJogoBase().getTitulo();
+
+                            JOptionPane.showMessageDialog(this, info, "Detalhes da DLC", JOptionPane.INFORMATION_MESSAGE);
                         }
+                        return;
                     }
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(this, "Erro ao recuperar dados do jogo: " + ex.getMessage());
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Selecione um jogo na tabela!");
+                JOptionPane.showMessageDialog(this, "Selecione uma obra na tabela!");
             }
         });
 
@@ -159,13 +183,30 @@ public class TelaPrincipal extends JFrame {
     private void atualizarTabela() {
         modeloTabela.setRowCount(0);
         ArrayList<Obra> obras = BancoDados.getInstancia().getObras();
+
         for (Obra o : obras) {
+            String tipo = "";
+            String generoPlataforma = "-";
+
             if (o instanceof Jogos j) {
-                Object[] row = {j.getId() ,j.getTitulo(), j.getAno(), j.getDesenvolvedor(), j.getGenero(), j.getPlataforma(), String.format("%.1f", j.getMedia())};
-                modeloTabela.addRow(row);
-
-
+                tipo = "Jogo";
+                generoPlataforma = j.getGenero() + " / " + j.getPlataforma();
+            } else if (o instanceof Expansao e) {
+                tipo = "DLC (Base: " + e.getJogoBase().getTitulo() + ")";
+                generoPlataforma = "Expansão";
             }
+
+            Object[] row = {
+                    o.getId(),
+                    o.getTitulo(),
+                    o.getAno(),
+                    o.getDesenvolvedor(),
+                    tipo,
+                    generoPlataforma,
+                    String.format("%.1f", o.getMedia())
+            };
+            modeloTabela.addRow(row);
         }
     }
 }
+
