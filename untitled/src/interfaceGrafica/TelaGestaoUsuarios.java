@@ -1,4 +1,4 @@
-package gerenciamentoPrograma.interfaces;
+package interfaceGrafica;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -8,7 +8,7 @@ import usuarios.Usuario;
 import usuarios.moderador.superModerador.SuperModerador;
 import usuarios.moderador.Moderador;
 import gerenciamentoPrograma.gerenciaLogin.LoginAut;
-import gerenciamentoPrograma.excecoes.AcessoNegadoException;
+import excecoes.AcessoNegadoException;
 
 public class TelaGestaoUsuarios extends JFrame {
     private JTable tabela;

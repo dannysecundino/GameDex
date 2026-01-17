@@ -1,4 +1,4 @@
-package gerenciamentoPrograma.interfaces;
+package interfaceGrafica;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -6,7 +6,6 @@ import java.awt.*;
 import gerenciamentoPrograma.bancoDados.BancoDados;
 import obras.Obra;
 import obras.jogos.Jogos;
-import obras.expansao.Expansao;
 
 public class TelaGerenciarCatalogo extends JFrame {
     private JTable tabela;

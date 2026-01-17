@@ -1,4 +1,4 @@
-package gerenciamentoPrograma.interfaces;
+package interfaceGrafica;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -8,7 +8,7 @@ import obras.jogos.Jogos;
 import avaliacao.Avaliacao;
 import gerenciamentoPrograma.gerenciaLogin.LoginAut;
 import usuarios.Usuario;
-import gerenciamentoPrograma.excecoes.NotaInvalidaException;
+import excecoes.NotaInvalidaException;
 
 public class TelaDetalhesJogo extends JFrame {
     private Jogos jogo;

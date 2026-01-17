@@ -1,4 +1,4 @@
-package gerenciamentoPrograma.interfaces;
+package interfaces;
 
 public interface Exibivel {
     String exibirDetalhes();

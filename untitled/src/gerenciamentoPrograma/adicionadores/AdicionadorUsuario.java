@@ -1,7 +1,7 @@
 package gerenciamentoPrograma.adicionadores;
 
 import gerenciamentoPrograma.bancoDados.BancoDados;
-import gerenciamentoPrograma.excecoes.CadastroInvalidoException;
+import excecoes.CadastroInvalidoException;
 import usuarios.Usuario;
 
 public class AdicionadorUsuario {

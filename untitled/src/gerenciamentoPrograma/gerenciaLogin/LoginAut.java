@@ -1,7 +1,7 @@
 package gerenciamentoPrograma.gerenciaLogin;
 import usuarios.Usuario;
 import gerenciamentoPrograma.bancoDados.BancoDados;
-import gerenciamentoPrograma.excecoes.LoginInvalidoException;
+import excecoes.LoginInvalidoException;
 public class LoginAut {
     private static Usuario usuarioLogado;
 

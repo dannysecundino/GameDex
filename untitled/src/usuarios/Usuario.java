@@ -1,8 +1,8 @@
 package usuarios;
 
 import avaliacao.Avaliacao;
-import gerenciamentoPrograma.gerenciaLogin.Autenticavel;
-import gerenciamentoPrograma.interfaces.Exibivel;
+import interfaces.Autenticavel;
+import interfaces.Exibivel;
 import obras.Obra;
 
 import java.time.LocalDate;

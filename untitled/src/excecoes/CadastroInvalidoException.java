@@ -1,4 +1,4 @@
-package gerenciamentoPrograma.excecoes;
+package excecoes;
 
 public class CadastroInvalidoException extends Exception{
 

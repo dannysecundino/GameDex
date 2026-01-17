@@ -1,11 +1,10 @@
-package gerenciamentoPrograma.interfaces;
+package interfaceGrafica;
 
 import javax.swing.*;
 import java.awt.*;
 
 import gerenciamentoPrograma.adicionadores.AdicionadorUsuario;
-import gerenciamentoPrograma.bancoDados.BancoDados;
-import gerenciamentoPrograma.excecoes.CadastroInvalidoException;
+import excecoes.CadastroInvalidoException;
 import usuarios.Usuario;
 
 public class TelaCadastro extends JFrame{

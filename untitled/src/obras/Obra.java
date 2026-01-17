@@ -1,7 +1,7 @@
 package obras;
 import avaliacao.Avaliacao;
-import gerenciamentoPrograma.excecoes.NotaInvalidaException;
-import gerenciamentoPrograma.interfaces.Exibivel;
+import excecoes.NotaInvalidaException;
+import interfaces.Exibivel;
 
 import java.util.ArrayList;
 public abstract class Obra implements Exibivel {

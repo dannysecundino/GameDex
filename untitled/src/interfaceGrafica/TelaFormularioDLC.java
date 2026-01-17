@@ -1,8 +1,8 @@
-package gerenciamentoPrograma.interfaces;
+package interfaceGrafica;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+
 import gerenciamentoPrograma.bancoDados.BancoDados;
 import obras.jogos.Jogos;
 import obras.expansao.Expansao;

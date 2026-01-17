@@ -1,15 +1,11 @@
 package javaAplication;
 
 import gerenciamentoPrograma.bancoDados.BancoDados;
-import gerenciamentoPrograma.interfaces.TelaCadastro;
-import gerenciamentoPrograma.interfaces.TelaLogin;
-import obras.Obra;
+import interfaceGrafica.TelaLogin;
 import obras.expansao.Expansao;
 import obras.jogos.Jogos;
 import usuarios.Usuario;
 import usuarios.moderador.superModerador.SuperModerador;
-
-import java.util.ArrayList;
 
 public class Main {
 

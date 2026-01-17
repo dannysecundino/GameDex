@@ -1,13 +1,11 @@
-package gerenciamentoPrograma.interfaces;
+package interfaceGrafica;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 
 import gerenciamentoPrograma.gerenciaLogin.LoginAut;
-import gerenciamentoPrograma.excecoes.LoginInvalidoException;
+import excecoes.LoginInvalidoException;
 
 public class TelaLogin extends JFrame {
 

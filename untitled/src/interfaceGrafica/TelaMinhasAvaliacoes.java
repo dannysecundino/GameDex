@@ -1,4 +1,4 @@
-package gerenciamentoPrograma.interfaces;
+package interfaceGrafica;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
