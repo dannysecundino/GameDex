@@ -93,10 +93,7 @@ public class TelaLogin extends JFrame {
         btnCadastrar.setContentAreaFilled(false);
         btnCadastrar.setForeground(Color.BLUE);
         btnCadastrar.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnCadastrar.addActionListener(e -> {
-            new TelaCadastro();
-            setVisible(true);
-        });
+        btnCadastrar.addActionListener(e -> new TelaCadastro());
 
         painelCadastro.add(lblAindaNao);
         painelCadastro.add(btnCadastrar);
