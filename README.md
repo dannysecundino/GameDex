@@ -29,7 +29,7 @@ O projeto foi desenvolvido com foco na aplicação de conceitos de **Programaç�
 
 ## 🛠️ Tecnologias Utilizadas
 
-* Linguagem: **Java** *(ajusta se não for Java)*
+* Linguagem: **Java**
 * Paradigma: Programação Orientada a Objetos
 * Execução via terminal/IDE
 
@@ -39,7 +39,7 @@ O projeto foi desenvolvido com foco na aplicação de conceitos de **Programaç�
 
 ### 🔹 Pré-requisitos
 
-* Java instalado *(ou a linguagem correta do projeto)*
+* Java instalado
 * IDE (IntelliJ, Eclipse) ou terminal
 
 ---
