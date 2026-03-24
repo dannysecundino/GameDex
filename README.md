@@ -19,6 +19,7 @@ O projeto foi desenvolvido com foco na aplicação de conceitos de **Programaç�
 ## 🚀 Funcionalidades
 
 * ✔️ Cadastro de jogos
+* ✔️ Cadastro e manutenção de dados de usuários durante a execução
 * ✔️ Registro de avaliações
 * ✔️ Consulta de informações dos jogos
 * ✔️ Organização dos dados de forma estruturada
